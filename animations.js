@@ -60,35 +60,13 @@ $(window).on("load", function () {
         let list = clock.querySelector(".cd-container > ul");
         let result = deadline.split('');
         let numbers = [];
+
         for (let i = 0; i < result.length; i++) {
-            let block = `
-                <li class="cd_${i}">
-                    <div class="cd_anim">
-                        <div class="cd_num below">
-                            <div class="cd_top-num">
-                                <div class="cd_shadows"></div>
-                                <div class="cd_part number">0</div>
-                            </div>
-                            <div class="cd_bottom-num">
-                                <div class="cd_shadows"></div>
-                                <div class="cd_part number">0</div>
-                            </div>
-                        </div>
-                        <div class="cd_num above">
-                            <div class="cd_top-num">
-                                <div class="cd_shadows"></div>
-                                <div class="cd_part number-min">0</div>
-                            </div>
-                            <div class="cd_bottom-num">
-                                <div class="cd_shadows"></div>
-                                <div class="cd_part number-min">0</div>
-                            </div>
-                        </div>
-                    </div>
-                </li>`;
+            let block = "\n                <li class=\"cd_".concat(i, "\">\n                    <div class=\"cd_anim\">\n                        <div class=\"cd_num below\">\n                            <div class=\"cd_top-num\">\n                                <div class=\"cd_shadows\"></div>\n                                <div class=\"cd_part number\">0</div>\n                            </div>\n                            <div class=\"cd_bottom-num\">\n                                <div class=\"cd_shadows\"></div>\n                                <div class=\"cd_part number\">0</div>\n                            </div>\n                        </div>\n                        <div class=\"cd_num above\">\n                            <div class=\"cd_top-num\">\n                                <div class=\"cd_shadows\"></div>\n                                <div class=\"cd_part number-min\">0</div>\n                            </div>\n                            <div class=\"cd_bottom-num\">\n                                <div class=\"cd_shadows\"></div>\n                                <div class=\"cd_part number-min\">0</div>\n                            </div>\n                        </div>\n                    </div>\n                </li>");
             numbers.push(0);
             list.innerHTML += block;
         }
+
         let numberSpan = clock.querySelectorAll(".number");
         let numberMinSpan = clock.querySelectorAll(".number-min");
 
@@ -97,18 +75,22 @@ $(window).on("load", function () {
                 let section = clock.querySelector(".cd_" + i);
                 let below = section.querySelectorAll(".below");
                 let above = section.querySelectorAll(".above");
-                for (let i = 0; i < below.length; i++) {
-                    below[i].classList.add("prev");
+
+                for (let _i = 0; _i < below.length; _i++) {
+                    below[_i].classList.add("prev");
                 }
-                for (let i = 0; i < above.length; i++) {
-                    above[i].classList.add("next");
+
+                for (let _i2 = 0; _i2 < above.length; _i2++) {
+                    above[_i2].classList.add("next");
                 }
+
                 setTimeout(function () {
-                    for (let i = 0; i < below.length; i++) {
-                        below[i].classList.remove("prev");
+                    for (let _i3 = 0; _i3 < below.length; _i3++) {
+                        below[_i3].classList.remove("prev");
                     }
-                    for (let i = 0; i < above.length; i++) {
-                        above[i].classList.remove("next");
+
+                    for (let _i4 = 0; _i4 < above.length; _i4++) {
+                        above[_i4].classList.remove("next");
                     }
                 }, timeForCounter * 9 / 10);
             } else {
@@ -117,17 +99,19 @@ $(window).on("load", function () {
         }
 
         function updateClock() {
-            for (let i = 0; i < numbers.length; i++) {
-                if (numbers[i] != result[i]) {
-                    numberSpan[2 * i].innerHTML = numbers[i];
-                    numberSpan[2 * i + 1].innerHTML = numbers[i];
-                    numberMinSpan[2 * i].innerHTML = numbers[i] + 1;
-                    numberMinSpan[2 * i + 1].innerHTML = numbers[i] + 1;
-                    numbers[i]++;
-                    animateTimer(id, i);
+            for (let _i5 = 0; _i5 < numbers.length; _i5++) {
+                if (numbers[_i5] != result[_i5]) {
+                    numberSpan[2 * _i5].innerHTML = numbers[_i5];
+                    numberSpan[2 * _i5 + 1].innerHTML = numbers[_i5];
+                    numberMinSpan[2 * _i5].innerHTML = numbers[_i5] + 1;
+                    numberMinSpan[2 * _i5 + 1].innerHTML = numbers[_i5] + 1;
+                    numbers[_i5]++;
+                    animateTimer(id, _i5);
                 }
             }
+
             console.log(numbers.join(), result.join());
+
             if (result.join() == numbers.join()) {
                 clearInterval(timeinterval);
             }
@@ -135,15 +119,12 @@ $(window).on("load", function () {
 
         updateClock();
         let timeinterval = setInterval(updateClock, timeForCounter);
-    }
+    } //Финальное отображение
 
 
-    //Финальное отображение
-    let deadline = '43571';
+    let deadline = '43571'; //Время в миллисекундах
 
-    //Время в миллисекундах
     let timeForCounter = 100;
-
 
     if (deadline) {
         initializeClock("counter", deadline);
