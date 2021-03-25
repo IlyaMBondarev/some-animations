@@ -2,8 +2,6 @@
 var ua = window.navigator.userAgent.toLowerCase(),
     is_ie = (/trident/gi).test(ua) || (/msie/gi).test(ua); //проверка для Internet Explorer
 
-console.log(is_ie);
-
 if (is_ie) { // если IE
     let linesBlockSvg = document.querySelector('.lines > svg');
     let linePaths = linesBlockSvg.querySelectorAll('path');
@@ -17,43 +15,62 @@ if (is_ie) { // если IE
 
     //количество пунктиров для каждой линии против часовой стрелки, начиная с левой верхней
 
-    var sizes = [36, 39, 18, 27, 42];
+    let sizes = [36, 39, 18, 27, 42];
 
-    //интервал появления линий. Минимальная величина - 9 * длина большей линии
-    var interval = 500;
-    var minInterval = 9 * Math.max.apply(Math, sizes);
+    //интервал появления линий
+    let interval = 150;
 
     //время движения линий
-    var time = 4000;
+    let time = 4000;
 
     //непосредственно реализация анимации
-    var linesBlockSvg = document.querySelector('.lines > svg');
-    var linePaths = linesBlockSvg.querySelectorAll('path');
-    var root = document.querySelector(':root');
-    root.style.setProperty("--firstinterval", "".concat(9 * sizes[0] + interval));
-    root.style.setProperty("--secondinterval", "".concat(9 * sizes[1] + interval));
-    root.style.setProperty("--thirdinterval", "".concat(9 * sizes[2] + interval));
-    root.style.setProperty("--fourthinterval", "".concat(-(9 * sizes[3] + interval)));
-    root.style.setProperty("--fifthinterval", "".concat(-(9 * sizes[4] + interval)));
-
-    if (interval < minInterval) {
-        interval = minInterval;
-    }
+    let randomNumbers = [ 0.1, 0.3, 0.5, 0.7, 0.9 ];
+    let linesBlockSvg = document.querySelector('.lines > svg');
+    let linePaths = linesBlockSvg.querySelectorAll('path');
+    let root = document.querySelector(':root');
+    root.style.setProperty("--firstinterval", "".concat(2 * (9 * sizes[0] + interval)));
+    root.style.setProperty("--secondinterval", "".concat(2 * (9 * sizes[1] + interval)));
+    root.style.setProperty("--thirdinterval", "".concat(2 * (9 * sizes[2] + interval)));
+    root.style.setProperty("--fourthinterval", "".concat(-2 * (9 * sizes[3] + interval) + interval));
+    root.style.setProperty("--fifthinterval", "".concat(-2 * (9 * sizes[4] + interval) + interval));
 
     linePaths.forEach(function (path, index) {
-        path.style.strokeDasharray = "0 ".concat(interval);
+        let lineSize = interval + 9 * sizes[index];
+        path.style.strokeDasharray = "0 ".concat(lineSize);
 
-        for (var j = 0; j < sizes[index] + 2; j++) {
+        for (let j = 0; j < sizes[index] + 2; j++) {
             path.style.strokeDasharray += " 6 3";
         }
 
         path.style.transition = "stroke-dashOffset ".concat(time, "ms linear");
+        let randomIndex = Math.floor(Math.random() * randomNumbers.length);
         setTimeout(function () {
             path.style.animation = "".concat(time, "ms linear 200ms infinite line").concat(index + 1);
-        }, Math.random() * time);
+        }, randomNumbers[randomIndex] * time);
+        randomNumbers.splice(randomIndex, 1);
     });
 }
 
 
 
 //Анимация счетчика
+
+jQuery(function() {
+    let i = 1;
+    jQuery('#counter').flipcountdown({
+        speedFlip: 40,
+        size: "sm",
+        tick:function() {
+            return '000000';
+        }
+    });
+    setTimeout(function () {
+        jQuery('#counter').flipcountdown({
+            speedFlip: 40,
+            size: "sm",
+            tick:function() {
+                return '040506';
+            }
+        });
+    }, 0)
+})
