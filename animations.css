@@ -196,10 +196,10 @@ body {
 }
 
 .next {
-    animation: asd .2s .2s linear both;
-    -moz-animation: asd .2s .2s linear both;
-    -o-animation: asd .2s .2s linear both;
-    -webkit-animation: asd .2s .2s linear both;
+    animation: asd 100ms 100ms linear both;
+    -moz-animation: asd 100ms 100ms linear both;
+    -o-animation: asd 100ms 100ms linear both;
+    -webkit-animation: asd 100ms 100ms linear both;
     z-index: 2;
 }
 
@@ -250,10 +250,10 @@ body {
 
 .next .cd_bottom-num {
     z-index: 2;
-    animation: turn .2s .2s linear both;
-    -moz-animation: turn .2s .2s linear both;
-    -o-animation: turn .2s .2s linear both;
-    -webkit-animation: turn .2s .2s linear both;
+    animation: turn 100ms 100ms linear both;
+    -moz-animation: turn 100ms 100ms linear both;
+    -o-animation: turn 100ms 100ms linear both;
+    -webkit-animation: turn 100ms 100ms linear both;
 }
 @keyframes turn {
     0% {
@@ -289,10 +289,10 @@ body {
 
 .prev .cd_top-num {
     z-index: 2;
-    animation: turn2 .2s linear both;
-    -moz-animation: turn2 .2s linear both;
-    -webkit-animation: turn2 .2s linear both;
-    -o-animation: turn2 .2s linear both;
+    animation: turn2 100ms linear both;
+    -moz-animation: turn2 100ms linear both;
+    -webkit-animation: turn2 100ms linear both;
+    -o-animation: turn2 100ms linear both;
 }
 @keyframes turn2 {
     0% {
@@ -328,31 +328,31 @@ body {
 }
 
 .prev .cd_top-num .cd_shadow {
-    animation: show .2s linear both;
-    -moz-animation: show .2s linear both;
-    -webkit-animation: show .2s linear both;
-    -o-animation: show .2s linear both;
+    animation: show 100ms linear both;
+    -moz-animation: show 100ms linear both;
+    -webkit-animation: show 100ms linear both;
+    -o-animation: show 100ms linear both;
 }
 
 .next .cd_top-num .cd_shadow {
-    animation: hide .2s .12s linear both;
-    -moz-animation: hide .2s .12s linear both;
-    -webkit-animation: hide .2s .12s linear both;
-    -o-animation: hide .2s .12s linear both;
+    animation: hide 100ms 60ms linear both;
+    -moz-animation: hide 100ms 60ms linear both;
+    -webkit-animation: hide 100ms 60ms linear both;
+    -o-animation: hide 100ms 60ms linear both;
 }
 
 .prev .cd_bottom-num .cd_shadow {
-    animation: show .2s linear both;
-    -moz-animation: show .2s linear both;
-    -webkit-animation: show .2s linear both;
-    -o-animation: show .2s linear both;
+    animation: show 100ms linear both;
+    -moz-animation: show 100ms linear both;
+    -webkit-animation: show 100ms linear both;
+    -o-animation: show 100ms linear both;
 }
 
 .next .cd_bottom-num .cd_shadow {
-    animation: hide .2s .12s linear both;
-    -moz-animation: hide .2s .12s linear both;
-    -webkit-animation: hide .2s .12s linear both;
-    -o-animation: hide .2s .12s linear both;
+    animation: hide 100ms 60ms linear both;
+    -moz-animation: hide 100ms 60ms linear both;
+    -webkit-animation: hide 100ms 60ms linear both;
+    -o-animation: hide 100ms 60ms linear both;
 }
 
 @keyframes show {

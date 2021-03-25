@@ -137,8 +137,14 @@ $(window).on("load", function () {
         let timeinterval = setInterval(updateClock, timeForCounter);
     }
 
-    let deadline = '040506';
-    let timeForCounter = 400;
+
+    //Финальное отображение
+    let deadline = '43571';
+
+    //Время в миллисекундах
+    let timeForCounter = 100;
+
+
     if (deadline) {
         initializeClock("counter", deadline);
     }
