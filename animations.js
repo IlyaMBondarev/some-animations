@@ -1,4 +1,4 @@
-$( window ).ready(function() {
+$( window ).on("load", function() {
     var ua = window.navigator.userAgent.toLowerCase(),
         is_ie = (/trident/gi).test(ua) || (/msie/gi).test(ua); //проверка для Internet Explorer
 
