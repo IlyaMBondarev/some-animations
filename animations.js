@@ -1,6 +1,7 @@
-$( window ).on("load", function() {
-    var ua = window.navigator.userAgent.toLowerCase(),
+$(window).on("load", function () {
+    let ua = window.navigator.userAgent.toLowerCase(),
         is_ie = (/trident/gi).test(ua) || (/msie/gi).test(ua); //проверка для Internet Explorer
+    let root = document.querySelector(':root');
 
     if (is_ie) { // если IE
         let linesBlockSvg = document.querySelector('.lines > svg');
@@ -71,4 +72,97 @@ $( window ).on("load", function() {
             });
         }, 0)
     })
+
+
+//другая попытка
+
+    function initializeClock(id, deadline) {
+        let clock = document.getElementById(id);
+        let list = clock.querySelector(".cd-container > ul");
+        let result = deadline.split('');
+        let numbers = [];
+        for (let i = 0; i < result.length; i++) {
+            let block = `
+                <li class="cd_${i}">
+                    <div class="cd_anim">
+                        <div class="cd_num below">
+                            <div class="cd_top-num">
+                                <div class="cd_shadows"></div>
+                                <div class="cd_part number">0</div>
+                            </div>
+                            <div class="cd_bottom-num">
+                                <div class="cd_shadows"></div>
+                                <div class="cd_part number">0</div>
+                            </div>
+                        </div>
+                        <div class="cd_num above">
+                            <div class="cd_top-num">
+                                <div class="cd_shadows"></div>
+                                <div class="cd_part number-min">0</div>
+                            </div>
+                            <div class="cd_bottom-num">
+                                <div class="cd_shadows"></div>
+                                <div class="cd_part number-min">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>`;
+            numbers.push(0);
+            list.innerHTML += block;
+        }
+        let numberSpan = clock.querySelectorAll(".number");
+        let numberMinSpan = clock.querySelectorAll(".number-min");
+
+        function animateTimer(id, i) {
+            if (clock.classList.contains("init")) {
+                let section = clock.querySelector(".cd_" + i);
+                let below = section.querySelectorAll(".below");
+                let above = section.querySelectorAll(".above");
+                for (let i = 0; i < below.length; i++) {
+                    below[i].classList.add("prev");
+                }
+                for (let i = 0; i < above.length; i++) {
+                    above[i].classList.add("next");
+                }
+                setTimeout(function () {
+                    for (let i = 0; i < below.length; i++) {
+                        below[i].classList.remove("prev");
+                    }
+                    for (let i = 0; i < above.length; i++) {
+                        above[i].classList.remove("next");
+                    }
+                }, timeForCounter * 9 / 10);
+            } else {
+                clock.classList.add("init");
+            }
+        }
+
+        function updateClock() {
+            for (let i = 0; i < numbers.length; i++) {
+                if (numbers[i] != result[i]) {
+                    numberSpan[2 * i].innerHTML = numbers[i];
+                    numberSpan[2 * i + 1].innerHTML = numbers[i];
+                    numberMinSpan[2 * i].innerHTML = numbers[i] + 1;
+                    numberMinSpan[2 * i + 1].innerHTML = numbers[i] + 1;
+                    numbers[i]++;
+                    animateTimer(id, i);
+                }
+            }
+            console.log(numbers.join(), result.join());
+            if (result.join() == numbers.join()) {
+                clearInterval(timeinterval);
+            }
+        }
+
+        updateClock();
+        let timeinterval = setInterval(updateClock, timeForCounter);
+    }
+
+    let deadline = '040506';
+    let timeForCounter = 400;
+    if (deadline) {
+        initializeClock("counter2", deadline);
+    }
+
+
 });
