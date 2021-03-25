@@ -1,4 +1,4 @@
-
+//Анимация на карте
 
 //количество пунктиров для каждой линии против часовой стрелки, начиная с левой верхней
 let sizes = [ 36, 39, 18, 27, 42 ];
@@ -11,11 +11,19 @@ let interval = 500;
 let minInterval = 9 * Math.max(...sizes);
 
 //время движения линий
-let time = 1000;
+let time = 3000;
+
 
 //непосредственно реализация анимации
+
 let linesBlockSvg = document.querySelector('.lines > svg');
 let linePaths = linesBlockSvg.querySelectorAll('path');
+let root = document.querySelector(':root');
+root.style.setProperty("--firstinterval", `${9 * sizes[0] + interval}`);
+root.style.setProperty("--secondinterval", `${9 * sizes[1] + interval}`);
+root.style.setProperty("--thirdinterval", `${9 * sizes[2] + interval}`);
+root.style.setProperty("--fourthinterval", `${-(9 * sizes[3] + interval)}`);
+root.style.setProperty("--fifthinterval", `${-(9 * sizes[4] + interval)}`);
 
 if (interval < minInterval) {
     interval = minInterval;
@@ -28,14 +36,11 @@ linePaths.forEach((path, index) => {
     }
     path.style.transition = `stroke-dashOffset ${time}ms linear`;
     setTimeout(() => {
-        if (path.classList.contains('toRight')) {
-            setInterval(() => {
-                path.style.strokeDashoffset = `${+path.style.strokeDashoffset - speed}`;
-            }, time)
-        } else {
-            setInterval(() => {
-                path.style.strokeDashoffset = `${+path.style.strokeDashoffset + speed}`;
-            }, time)
-        }
-    }, Math.random() * time * index)
+        path.style.animation = `${time}ms linear 200ms infinite line${index + 1}`;
+    }, Math.random() * time)
 })
+
+
+
+
+//Анимация счетчика

@@ -1,3 +1,11 @@
+:root {
+    --firstinterval: 0;
+    --secondinterval: 0;
+    --thirdinterval: 0;
+    --fourthinterval: 0;
+    --fifthinterval: 0;
+}
+
 body {
     height: 100vh;
     width: 100vw;
@@ -23,42 +31,42 @@ body {
     max-height: 53.15%;
 }
 
-
-
-/*
-.line1 { //36
-    top: 45.6%;
+@keyframes line1 {
+    from {
+        stroke-dashOffset: 0
+    } to {
+        stroke-dashOffset: var(--firstinterval)
+    }
 }
 
-.line2 { //27
-    top: 45.6%;
+@keyframes line2 {
+    from {
+        stroke-dashOffset: 0
+    } to {
+          stroke-dashOffset: var(--secondinterval)
+      }
 }
 
-.line3 { //42
-    left: 45.6%;
+@keyframes line3 {
+    from {
+        stroke-dashOffset: 0
+    } to {
+          stroke-dashOffset: var(--thirdinterval)
+      }
 }
 
-.line4 { //39
-    left: 45.6%;
+@keyframes line4 {
+    from {
+        stroke-dashOffset: 0
+    } to {
+          stroke-dashOffset: var(--fourthinterval)
+      }
 }
 
-.line5 { //18
-    left: 45.6%;
+@keyframes line5 {
+    from {
+        stroke-dashOffset: 0
+    } to {
+          stroke-dashOffset: var(--fifthinterval)
+      }
 }
-
-.lines_fromLeftToRight svg {
-    left: 45.6%;
-}
-
-.lines_fromRightToLeft svg {
-    right: 54.4%;
-}
-
-.lines_fromLeftToRight svg {
-    left: 45.6%;
-}
-
-.lines_fromLeftToRight svg {
-    left: 45.6%;
-}
-*/
