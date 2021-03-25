@@ -58,15 +58,13 @@ $( window ).on("load", function() {
         let i = 1;
         jQuery('#counter').flipcountdown({
             speedFlip: 40,
-            size: "sm",
             tick: function () {
                 return '000000';
             }
         });
         setTimeout(function () {
             jQuery('#counter').flipcountdown({
-                speedFlip: 40,
-                size: "sm",
+                speedFlip: 60,
                 tick: function () {
                     return '040506';
                 }

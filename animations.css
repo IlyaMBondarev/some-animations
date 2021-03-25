@@ -79,3 +79,7 @@ body {
 .xdsoft_separator {
     display: none;
 }
+
+.hiddenPicToLoad {
+    display: none;
+}
