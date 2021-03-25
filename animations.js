@@ -55,27 +55,6 @@ $(window).on("load", function () {
 
 //Анимация счетчика
 
-    jQuery(function () {
-        let i = 1;
-        jQuery('#counter').flipcountdown({
-            speedFlip: 40,
-            tick: function () {
-                return '000000';
-            }
-        });
-        setTimeout(function () {
-            jQuery('#counter').flipcountdown({
-                speedFlip: 60,
-                tick: function () {
-                    return '040506';
-                }
-            });
-        }, 0)
-    })
-
-
-//другая попытка
-
     function initializeClock(id, deadline) {
         let clock = document.getElementById(id);
         let list = clock.querySelector(".cd-container > ul");
@@ -161,7 +140,7 @@ $(window).on("load", function () {
     let deadline = '040506';
     let timeForCounter = 400;
     if (deadline) {
-        initializeClock("counter2", deadline);
+        initializeClock("counter", deadline);
     }
 
 

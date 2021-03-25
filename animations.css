@@ -91,6 +91,10 @@ body {
     padding: 0;
 }
 
+.cd-container > ul > li {
+    margin-left: 2px;
+}
+
 .cd_anim {
     height: 37px;
     width: 27px;
@@ -113,7 +117,7 @@ body {
 
 .cd_num:before {
     top: 19px;
-    border-top: 1px solid rgba(199, 199, 199, 0.901961);
+    border-top: 1px solid #C4C4C4;
     width: 100%;
     height: 1px;
     position: absolute;
@@ -125,7 +129,7 @@ body {
 
 .cd_num:after {
     top: 18px;
-    border-top: 1px solid rgba(217, 217, 217, 0.360784);
+    border-bottom: 1px solid #C4C4C4;
     content: "";
     width: 100%;
     height: 1px;
@@ -165,13 +169,18 @@ body {
     height: 200%;
     left: 0;
     text-align: center;
-    font-size: 30px;
-    line-height: 50px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    background: linear-gradient(to bottom, rgb(255, 255, 255) 53%, rgb(224, 224, 224) 100%);
-    box-shadow: inset 0 1px 0 rgba(201, 201, 201, 0.682353), inset 0 -3px 0 rgba(102, 102, 102, 0.4);
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 22px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: #699DEE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cd_top-num .cd_part {
@@ -319,31 +328,31 @@ body {
 }
 
 .prev .cd_top-num .cd_shadow {
-    animation: show .2s linear both !important;
-    -moz-animation: show .2s linear both !important;
-    -webkit-animation: show .2s linear both !important;
-    -o-animation: show .2s linear both !important;
+    animation: show .2s linear both;
+    -moz-animation: show .2s linear both;
+    -webkit-animation: show .2s linear both;
+    -o-animation: show .2s linear both;
 }
 
 .next .cd_top-num .cd_shadow {
-    animation: hide .2s .12s linear both !important;
-    -moz-animation: hide .2s .12s linear both !important;
-    -webkit-animation: hide .2s .12s linear both !important;
-    -o-animation: hide .2s .12s linear both !important;
+    animation: hide .2s .12s linear both;
+    -moz-animation: hide .2s .12s linear both;
+    -webkit-animation: hide .2s .12s linear both;
+    -o-animation: hide .2s .12s linear both;
 }
 
 .prev .cd_bottom-num .cd_shadow {
-    animation: show .2s linear both !important;
-    -moz-animation: show .2s linear both !important;
-    -webkit-animation: show .2s linear both !important;
-    -o-animation: show .2s linear both !important;
+    animation: show .2s linear both;
+    -moz-animation: show .2s linear both;
+    -webkit-animation: show .2s linear both;
+    -o-animation: show .2s linear both;
 }
 
 .next .cd_bottom-num .cd_shadow {
-    animation: hide .2s .12s linear both !important;
-    -moz-animation: hide .2s .12s linear both !important;
-    -webkit-animation: hide .2s .12s linear both !important;
-    -o-animation: hide .2s .12s linear both !important;
+    animation: hide .2s .12s linear both;
+    -moz-animation: hide .2s .12s linear both;
+    -webkit-animation: hide .2s .12s linear both;
+    -o-animation: hide .2s .12s linear both;
 }
 
 @keyframes show {
@@ -411,10 +420,16 @@ body {
     }
 }
 
-.xdsoft_separator {
-    display: none;
+.info {
+    position: absolute;
+    right: -26px;
+    bottom: 55px;
 }
 
-.hiddenPicToLoad {
-    display: none;
+.info__title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 500;
+    color: #323338;
 }
