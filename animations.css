@@ -37,43 +37,78 @@ body {
 }
 
 @keyframes line1 {
-    from {
-        stroke-dashOffset: 0
-    } to {
-        stroke-dashOffset: var(--firstinterval)
+    0% {
+        stroke-dashOffset: 0;
+        opacity: 1;
+    }
+    75% {
+        stroke-dashOffset: var(--firstinterval);
+        opacity: 1;
+    }
+    100% {
+        stroke-dashOffset: var(--firstinterval);
+        opacity: 0;
     }
 }
 
 @keyframes line2 {
-    from {
-        stroke-dashOffset: 0
-    } to {
-          stroke-dashOffset: var(--secondinterval)
-      }
+    0% {
+        stroke-dashOffset: 0;
+        opacity: 1;
+    }
+    75% {
+        stroke-dashOffset: var(--secondinterval);
+        opacity: 1;
+    }
+    100% {
+        stroke-dashOffset: var(--secondinterval);
+        opacity: 0;
+    }
 }
 
 @keyframes line3 {
-    from {
-        stroke-dashOffset: 0
-    } to {
-          stroke-dashOffset: var(--thirdinterval)
-      }
+    0% {
+        stroke-dashOffset: 0;
+        opacity: 1;
+    }
+    75% {
+        stroke-dashOffset: var(--thirdinterval);
+        opacity: 1;
+    }
+    100% {
+        stroke-dashOffset: var(--thirdinterval);
+        opacity: 0;
+    }
 }
 
 @keyframes line4 {
-    from {
-        stroke-dashOffset: 0
-    } to {
-          stroke-dashOffset: var(--fourthinterval)
-      }
+    0% {
+        stroke-dashOffset: 0;
+        opacity: 1;
+    }
+    75% {
+        stroke-dashOffset: var(--fourthinterval);
+        opacity: 1;
+    }
+    100% {
+        stroke-dashOffset: var(--fourthinterval);
+        opacity: 0;
+    }
 }
 
 @keyframes line5 {
-    from {
-        stroke-dashOffset: 0
-    } to {
-          stroke-dashOffset: var(--fifthinterval)
-      }
+    0% {
+        stroke-dashOffset: 0;
+        opacity: 1;
+    }
+    75% {
+        stroke-dashOffset: var(--fifthinterval);
+        opacity: 1;
+    }
+    100% {
+        stroke-dashOffset: var(--fifthinterval);
+        opacity: 0;
+    }
 }
 
 .cd-container {

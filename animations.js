@@ -29,11 +29,11 @@ $(window).on("load", function () {
         let linesBlockSvg = document.querySelector('.lines > svg');
         let linePaths = linesBlockSvg.querySelectorAll('path');
         let root = document.querySelector(':root');
-        root.style.setProperty("--firstinterval", "".concat(2 * (9 * sizes[0] + interval)));
-        root.style.setProperty("--secondinterval", "".concat(2 * (9 * sizes[1] + interval)));
-        root.style.setProperty("--thirdinterval", "".concat(2 * (9 * sizes[2] + interval)));
-        root.style.setProperty("--fourthinterval", "".concat(-2 * (9 * sizes[3] + interval) + interval));
-        root.style.setProperty("--fifthinterval", "".concat(-2 * (9 * sizes[4] + interval) + interval));
+        root.style.setProperty("--firstinterval", "".concat((9 * sizes[0] + interval)));
+        root.style.setProperty("--secondinterval", "".concat((9 * sizes[1] + interval)));
+        root.style.setProperty("--thirdinterval", "".concat((9 * sizes[2] + interval)));
+        root.style.setProperty("--fourthinterval", "".concat(-1 * (9 * sizes[3] + interval) + interval));
+        root.style.setProperty("--fifthinterval", "".concat(-1 * (9 * sizes[4] + interval) + interval));
 
         linePaths.forEach(function (path, index) {
             let lineSize = interval + 9 * sizes[index];
@@ -70,6 +70,7 @@ $(window).on("load", function () {
         let numberSpan = clock.querySelectorAll(".number");
         let numberMinSpan = clock.querySelectorAll(".number-min");
 
+        setTimeout(function () {
         function animateTimer(id, i) {
             if (clock.classList.contains("init")) {
                 let section = clock.querySelector(".cd_" + i);
@@ -110,25 +111,26 @@ $(window).on("load", function () {
                 }
             }
 
-            console.log(numbers.join(), result.join());
-
             if (result.join() == numbers.join()) {
                 clearInterval(timeinterval);
             }
         }
 
-        updateClock();
-        let timeinterval = setInterval(updateClock, timeForCounter);
-    } //Финальное отображение
+            updateClock();
+            let timeinterval = setInterval(updateClock, timeForCounter);
+        }, 300)
+    }
 
+    //Число, которое должно отобразиться
+    let deadline = '43571';
 
-    let deadline = '43571'; //Время в миллисекундах
-
+    //Время в миллисекундах
     let timeForCounter = 100;
+
+    //Отсрочка в миллисекундах
+    let timeBeforeStart = 300;
 
     if (deadline) {
         initializeClock("counter", deadline);
     }
-
-
 });
