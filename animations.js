@@ -24,16 +24,18 @@ $(window).on("load", function () {
         //время движения линий
         let time = 4000;
 
+        //частота случайного порядка появления линий. Чем больше разрыв между числами, тем реже они появляются
+        let randomNumbers = [0.2, 0.6, 1, 1.4, 1.8];
+
         //непосредственно реализация анимации
-        let randomNumbers = [0.1, 0.3, 0.5, 0.7, 0.9];
         let linesBlockSvg = document.querySelector('.lines > svg');
         let linePaths = linesBlockSvg.querySelectorAll('path');
         let root = document.querySelector(':root');
         root.style.setProperty("--firstinterval", "".concat((9 * sizes[0] + interval)));
         root.style.setProperty("--secondinterval", "".concat((9 * sizes[1] + interval)));
         root.style.setProperty("--thirdinterval", "".concat((9 * sizes[2] + interval)));
-        root.style.setProperty("--fourthinterval", "".concat(-1 * (9 * sizes[3] + interval) + interval));
-        root.style.setProperty("--fifthinterval", "".concat(-1 * (9 * sizes[4] + interval) + interval));
+        root.style.setProperty("--fourthinterval", "".concat(-1 * (9 * sizes[3])));
+        root.style.setProperty("--fifthinterval", "".concat(-1 * (9 * sizes[4])));
 
         linePaths.forEach(function (path, index) {
             let lineSize = interval + 9 * sizes[index];
