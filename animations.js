@@ -79,8 +79,8 @@ $(window).on("load", function () {
             }
 
             setTimeout(function () {
-                path.style.animation = "".concat(time, "ms linear 0ms infinite line").concat(index + 1);
-            }, 2 * randomNumbers[index] * time/linePaths.length);
+                path.style.animation = "".concat(time, "ms linear ").concat(randomNumbers[index] * time/linePaths.length, "ms infinite line").concat(index + 1);
+            }, 0);
         });
     }
 
