@@ -79,7 +79,7 @@ $(window).on("load", function () {
             }
 
             setTimeout(function () {
-                path.style.animation = "".concat(time, "ms linear ").concat(randomNumbers[index] * time/linePaths.length, "ms infinite line").concat(index + 1);
+                path.style.animation = "".concat(time, "ms linear ").concat(0.8 * randomNumbers[index] * time/linePaths.length, "ms infinite line").concat(index + 1);
             }, 0);
         });
     }
