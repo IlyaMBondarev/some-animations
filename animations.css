@@ -83,30 +83,30 @@ body {
 
 @keyframes line4 {
     0% {
-        stroke-dashOffset: 0;
+        stroke-dashOffset: var(--fourthinterval);
         opacity: 1;
     }
     75% {
-        stroke-dashOffset: var(--fourthinterval);
         opacity: 1;
+        stroke-dashOffset: 0;
     }
     100% {
-        stroke-dashOffset: var(--fourthinterval);
+        stroke-dashOffset: 0;
         opacity: 0;
     }
 }
 
 @keyframes line5 {
     0% {
-        stroke-dashOffset: 0;
+        stroke-dashOffset: var(--fifthinterval);
         opacity: 1;
     }
     75% {
-        stroke-dashOffset: var(--fifthinterval);
         opacity: 1;
+        stroke-dashOffset: 0;
     }
     100% {
-        stroke-dashOffset: var(--fifthinterval);
+        stroke-dashOffset: 0;
         opacity: 0;
     }
 }

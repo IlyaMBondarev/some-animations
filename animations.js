@@ -19,38 +19,68 @@ $(window).on("load", function () {
         let sizes = [36, 39, 18, 27, 42];
 
         //интервал появления линий
-        let interval = 150;
+        let interval = 1000;
 
         //время движения линий
         let time = 4000;
 
-        //Случайный коэффициент времени перед началом анимации
-        let randomNumbers = [0.3, 0.6, 0.9, 1.2, 1.5];
 
         //непосредственно реализация анимации
+        let randomNumbers = [];
         let linesBlockSvg = document.querySelector('.lines > svg');
         let linePaths = linesBlockSvg.querySelectorAll('path');
-        let root = document.querySelector(':root');
-        root.style.setProperty("--firstinterval", "".concat((9 * sizes[0] + interval)));
-        root.style.setProperty("--secondinterval", "".concat((9 * sizes[1] + interval)));
-        root.style.setProperty("--thirdinterval", "".concat((9 * sizes[2] + interval)));
-        root.style.setProperty("--fourthinterval", "".concat(-1 * (9 * sizes[3])));
-        root.style.setProperty("--fifthinterval", "".concat(-1 * (9 * sizes[4])));
+        root.style.setProperty("--firstinterval", "".concat(9 * sizes[0] + interval));
+        root.style.setProperty("--secondinterval", "".concat(9 * sizes[1] + interval));
+        root.style.setProperty("--thirdinterval", "".concat(9 * sizes[2] + interval));
+        root.style.setProperty("--fourthinterval", "".concat(9 * sizes[3] + interval));
+        root.style.setProperty("--fifthinterval", "".concat(9 * sizes[4] + interval));
 
-        linePaths.forEach(function (path, index) {
-            let lineSize = interval + 9 * sizes[index];
-            path.style.strokeDasharray = "0 ".concat(lineSize);
+        for (let i = 0; i < linePaths.length; i++) {
+            randomNumbers.push(i);
+        }
 
-            for (let j = 0; j < sizes[index] + 2; j++) {
-                path.style.strokeDasharray += " 6 3";
+        function shuffle(array) {
+            let currentIndex = array.length, temporaryValue, randomIndex;
+
+            while (0 !== currentIndex) {
+
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
             }
 
-            path.style.transition = "stroke-dashOffset ".concat(time, "ms linear");
-            let randomIndex = Math.floor(Math.random() * randomNumbers.length);
+            return array;
+        }
+
+        randomNumbers = shuffle(randomNumbers);
+
+        linePaths.forEach(function (path, index) {
+            let lineSize = 9 * sizes[index] + interval;
+            if (path.classList.contains("toRight")) {
+                path.style.strokeDashoffset = "".concat(9 * sizes[index] + interval);
+                let line = "";
+                for (let j = 0; j < sizes[index] + 2; j++) {
+                    line += "6 3 ";
+                }
+
+                line += "0 ".concat(lineSize);
+                path.style.strokeDasharray = line;
+            } else {
+                let line = "";
+                line = "0 ".concat(lineSize);
+
+                for (let j = 0; j < sizes[index] + 2; j++) {
+                    line += " 6 3";
+                }
+                path.style.strokeDasharray = line;
+            }
+
             setTimeout(function () {
-                path.style.animation = "".concat(time, "ms linear 200ms infinite line").concat(index + 1);
-            }, randomNumbers[randomIndex] * time);
-            randomNumbers.splice(randomIndex, 1);
+                path.style.animation = "".concat(time, "ms linear 0ms infinite line").concat(index + 1);
+            }, 2 * randomNumbers[index] * time/linePaths.length);
         });
     }
 
